@@ -1,0 +1,63 @@
+{
+    "info": [
+        {
+            "id": "21b937bb-d3dc-4a46-a338-ae9d63b0dae8",
+            "type": "Text",
+            "content": {
+                "title": null,
+                "body": "#digitalgarden #PKM\nhttps://tomcritchlow.com/2019/02/17/building-digital-garden/\n\nSome other interesting wikis Credit for inspiration for this whole project comes from a variety of wikis and wiki-like collections on the web:\n\nbuster.wiki - Strong design and everything has a date by the looks of it which enables an RSS feed. Very polished and thought through.\n\nare.na - A platform that all the cool kids use for building personal knowledge libraries. Lightly social, perhaps the right answer but slightly questionable if they’ll be around for a long time. Ymmv.\n\nBrendan’s /canon - this was part of the original inspiration for me. A curated list of pure stock - things that Brendan returns to again and again. He has a template you can copy too.\n\nWorrydream’s quotes page - just a massive list of interesting quotes collected by Brett Victor. Notice how being one giant page makes it instantly searchable.\n\ndaywreckers.com - from Ben Pieratt, not quite a wiki but a very minimal site designed to collect the dots. A daily visit from me.\n\nderek sivers’ daily journal - a post from Derek Sivers on how to keep a text-file long-term store for your ideas and notes.\n\n————————\n\nConcepts\n\nStock over flow\nA blog without a publish button\nA space for collecting the dots\nLongevity, text files and folders",
+                "image_url": null,
+                "childs": null
+            },
+            "tags": [
+                "digitalgarden",
+                "PKM"
+            ],
+            "createAt": 1680216593.707000000,
+            "editAt": 1680216593.707000000,
+            "tgId": null,
+            "tgLink": "https://t.me/jackAzone/2707",
+            "userId": null
+        },
+        {
+            "id": "0e1b186f-d0b2-425e-b9e0-caa344e62506",
+            "type": "Text",
+            "content": {
+                "title": null,
+                "body": "https://en.wikipedia.org/wiki/Paper_size#K\n\n小说经常用32开纸印刷。 这里的开英文是K\n大小：半张A4纸\n东亚喜欢用开来计算纸张尺寸\n\n#术语 #开 #papersize",
+                "image_url": null,
+                "childs": null
+            },
+            "tags": [
+                "术语",
+                "开",
+                "papersize"
+            ],
+            "createAt": 1680032753.706000000,
+            "editAt": 1680032753.706000000,
+            "tgId": null,
+            "tgLink": "https://t.me/jackAzone/2706",
+            "userId": null
+        },
+        {
+            "id": "e20ae5d6-5802-49dc-9971-71f4f1f8b1e5",
+            "type": "Text",
+            "content": {
+                "title": null,
+                "body": "#aigc #阶级 #负能量\n\naigc这波浪潮为什么最近社会反响这么大？ 这个问题或许需要拆分\n\n1. 工人阶级知识分子：受冲击最大。\n a. 阶级性质：工人阶级缺少生产资料，依然不得不靠出卖劳动力来维持生活。脑力劳动也算\n b. 市场角度：知识分子“工具性“的稀缺性受到了很大的冲击，脑力劳动的人才市场受到冲击。\n c. 心理层面：很多脑力劳动沦为了体力劳动，劳动性质的变化冲击劳动者的自我认知与社会评价\n d. 打击面：非常广泛，无论政产学研，无论无产还是中产还是小资，无论是学生研究员打工人还是高管，都有生存危机。\n\n2.  真正的资产阶级/统治阶级：FOMO下乐观积极\n a. 作为资源所有者，不需要工作以求生，人才市场的波动也不会波及自身的存在\n b. 以剥削劳动者为生，整体劳动效率的提升对食利阶层来说是有益的。\n c. 作为投资者，他们唯一担心的就是这波红利能吃多少。\n d. 应用领域，资本家在能降本增效的地方一定会降本增效\n e. 统治阶级在剥削的基础上，还会考虑维稳问题，但整体有心无力去违背客观规律。在科技爆发面前，追求效率已经成为了一种自发的，难以对抗的趋势，贫富差距的扩大短期只能缓解不可避免\n\n3. 纯粹的体力劳动者：受影响较小\n a. 已经被锤了几个世纪了，每一轮工业革命已经锤麻了\n b. 单说国内，最近20年产业升级已经打击的差不多了\n\n分析完人的要素，再去看网络现状就很清楚了：\n1. 工人知识分子是网络主要发声群体，加上这两年经济不景气，AIGC可谓是雪上加霜。UGC焦虑抵触情绪很重。\n2. 资本与官僚在FOMO下高歌猛进，从PGC主流媒体疯狂造势可见一斑\n3. 体力劳动者，仅活跃在微信群等，很多人对这波浪潮完全无感，甚至都不知道也不关心发生了什么。",
+                "image_url": null,
+                "childs": null
+            },
+            "tags": [
+                "aigc",
+                "阶级",
+                "负能量"
+            ],
+            "createAt": 1679975389.705000000,
+            "editAt": 1679975389.705000000,
+            "tgId": null,
+            "tgLink": "https://t.me/jackAzone/2705",
+            "userId": null
+        }
+    ]
+}
