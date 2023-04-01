@@ -1,15 +1,27 @@
 import openai
+import time
 
 class EmbManager(object):
     def __init__(self):
-        openai.api_key = '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'
+        openai.api_key = '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'
         pass
     
+
     def single_text_to_emb(self, text):
-        datas = openai.Embedding.create(input=[text], model="text-embedding-ada-002").data
+        try:
+            datas = openai.Embedding.create(input=[text], model="text-embedding-ada-002").data
+            return datas[0]['embedding']
+        except Exception as e:
+            print(e)
+            time.sleep(5)
+            return None
         # datas = sorted(datas, key=lambda x: x["index"])
         # print(datas)
-        return datas[0]['embedding']
+        
+    
+
+    def batch_texts_to_embs(self, texts):
+        return openai.Embedding.create(input=texts, model="text-embedding-ada-002").data
 
 if __name__ == "__main__":
     test = EmbManager()

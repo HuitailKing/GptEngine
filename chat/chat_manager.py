@@ -1,8 +1,8 @@
 #coding:utf8
 
 import openai
-from index.db_manager import DbManager
-from 
+from index.telegram_manager import TelegramManager
+from chat.prompt_manager import PromptManager
 
 DEFAULT_PROMPT_TEMPLATE = """\
 Context information is below.
@@ -17,11 +17,11 @@ Answer the question: {query_str}
 Reply in {reply_language}
 """
 
-DEFAULT_PROMPT = DEFAULT_PROMPT_TEMPLATE.format(context_str="我叫东莞晨", query_str="我叫什么", reply_language="Chinese")
+DEFAULT_PROMPT = DEFAULT_PROMPT_TEMPLATE.format(context_str="我叫董冠辰", query_str="我叫什么", reply_language="Chinese")
 
 class ChatManager(object):
     def __init__(self):
-        openai.api_key = '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'
+        openai.api_key = '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'
     
 
     def predict(self, prompt=DEFAULT_PROMPT):
@@ -32,9 +32,24 @@ class ChatManager(object):
             ],
             temperature=0,
         )
+        print('================ GPT Response ================')
         print(rsp['choices'][0]['message']['content'])
 
 if __name__ == "__main__":
+    tg_manager = TelegramManager()
+    prompt_manager = PromptManager()
     chat_manager = ChatManager()
-    
-    chat_manager.predict()
+
+    # 建库
+    tg_manager.single_mode_process_v1()
+
+    while True:
+        query_str = input("================ 请输入query: ===============\n")
+        # 构造prompt
+        # query_str = '技爆发面前，追求效率已经成为了一种自发'
+        prompt = prompt_manager.construct_qa_prompt(query_str, top_k=20)
+        print("=================== GPT Prompt ==================")
+        print(prompt)
+
+        # 交互
+        chat_manager.predict(prompt)

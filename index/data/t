@@ -1,0 +1,1 @@
+curl --request GET  --url https://api.shokichan.com/api/v1/info?collectionId=3d350322-7ffd-4b0c-b619-1ff97bfb1c99&no_tag=false&pageSize=1000000&pageNum=0  --header 'accept: application/json'
