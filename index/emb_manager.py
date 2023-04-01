@@ -3,7 +3,7 @@ import time
 
 class EmbManager(object):
     def __init__(self):
-        openai.api_key = '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'
+        openai.api_key = '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'
         pass
     
 

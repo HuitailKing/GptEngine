@@ -33,12 +33,14 @@ class TelegramManager(object):
         return []
 
 
-    def single_mode_process_v1(self):
+    def single_mode_process_v1(self, start_idx=0):
         db_manager = DbManager('gpt-index-cut-v1')
         start_time = time.time()
         origin_doc_list = self.get_documents()
         try:
             for idx, doc in enumerate(origin_doc_list):
+                if idx < start_idx:
+                    continue
                 if doc['type'] != 'Text':
                     continue
                 print('---------------------------> doc cnt:' + str(idx)) 
