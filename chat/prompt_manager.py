@@ -8,19 +8,17 @@ This is a telegram channel of Jack, text is below.
 {context_str}
 ---------------------
 Using the provided context information, write a comprehensive reply to the given query.
-Make sure to cite results using [number] notation after the reference.
-If the provided context information refer to multiple subjects with the same name, write separate answers for each subject.
 Use prior knowledge only if the given context didn't provide enough information.
 Answer the question: {query_str}
 Reply in {reply_language}
+reply as much as possible.
 """
-
 
 DEFAULT_PROMPT = DEFAULT_PROMPT_TEMPLATE.format(context_str="我叫董冠辰", query_str="我叫什么", reply_language="Chinese")
 
 class PromptManager(object):
-    def __init__(self):
-        self.db_manager = DbManager()
+    def __init__(self, index_name='gpt-index-cut-v1'):
+        self.db_manager = DbManager(index_name)
         self.encoding = tiktoken.get_encoding('cl100k_base')
         self.clean_prompt_token = len(self.encoding.encode(DEFAULT_PROMPT_TEMPLATE))
 
@@ -29,7 +27,7 @@ class PromptManager(object):
         return DEFAULT_PROMPT_TEMPLATE.format(query_str=query_str, context_str=context_str,reply_language=reply_language)
 
 
-    def construct_context(self, query_str, token_limit = 4096, top_k = 10):
+    def construct_context(self, query_str, token_limit = 3600, top_k = 10):
         total_token_cnt = 0
 
         matches = self.db_manager.query(query_str, top_k)['matches']
