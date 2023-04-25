@@ -23,9 +23,9 @@ from chat.prompt_manager import PromptManager
 
 class ChatManager(object):
     def __init__(self):
-        openai.api_key = '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'
+        openai.api_key = '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'
 
-
+    # gpt-3.5-turbo
     def predict(self, prompt=''):
         rsp = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
@@ -35,8 +35,9 @@ class ChatManager(object):
             temperature=0,
         )
         print('================ GPT Response ================')
-        print(rsp['choices'][0]['finish_reason'])
-        print(rsp['choices'][0]['message']['content'])
+        return rsp
+
+chat_instance = ChatManager()
 
 # info粒度建库
 def ai_func_v0():
