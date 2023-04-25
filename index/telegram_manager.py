@@ -6,7 +6,8 @@ import json
 import tiktoken
 import hashlib
 from utils.util import get_md5
-from index.db_manager import DbManager
+# from index.db_manager import DbManager
+from index.file_db_manager import FileDbManager
 import logging
 import time
 
@@ -14,7 +15,8 @@ class TelegramManager(object):
     def __init__(self):
         self.tokenizer = tiktoken.get_encoding('cl100k_base')
 
-    def get_documents(self, file="/Users/bytedance/Documents/repo/gpt/GptEngine/index/data/jackzone_full.json"):
+    def get_documents(self, index_name="jackzone_sample"):
+        file = "/Users/bytedance/Documents/repo/gpt/GptEngine/index/data/" + index_name + ".json"
         documents = []
         index_name = ""
         logging.debug("Loading documents...")
@@ -34,7 +36,7 @@ class TelegramManager(object):
 
 
     def single_mode_process_v1(self, start_idx=0):
-        db_manager = DbManager('gpt-index-cut-v1')
+        db_manager = FileDbManager('jacksample')
         start_time = time.time()
         origin_doc_list = self.get_documents()
         try:
@@ -60,28 +62,37 @@ class TelegramManager(object):
             time.sleep(2)
         end_time = time.time()
         print("========== process time:" + str(end_time - start_time))
-    
+        db_manager.save_to_disk()
 
-    def single_mode_process_v0(self):
+    # info粒度建库
+    def single_mode_process_v0(self, index_name="jackzone_sample"):
         start_time = time.time()
-        origin_doc_list = self.get_documents()
-        db_manager = DbManager()
+        origin_doc_list = self.get_documents(index_name)
+        db_manager = FileDbManager(index_name)
+        not_text_cnt = 0
+        succ_cnt = 0
+        fail_cnt = 0
         try:
             for idx, doc in enumerate(origin_doc_list):
                 if doc['type'] != 'Text':
+                    not_text_cnt += 1
                     continue
                 print('---------------------------> doc cnt:' + str(idx)) 
                 text = doc['content']['body']
                 
-                db_manager.build_single_doc(text, doc['tags'], origin_info_id=doc['id'])
+                ret = db_manager.build_single_doc(text, doc['tags'], origin_info_id=doc['id'])
+                if ret:
+                    succ_cnt += 1
+                else:
+                    fail_cnt += 1
                 # time.sleep(0.9)
         except Exception as e:
             # openai可能限速 maybe需要充钱
             print(e)
             time.sleep(2)
         end_time = time.time()
-        print("========== process time:" + str(end_time - start_time))
-    
+        print("========== process time:" + str(end_time - start_time) + " total:" + str(len(origin_doc_list)) + " success:" + str(succ_cnt) + " failed:" + str(fail_cnt) + " not_text:" + str(not_text_cnt))
+        db_manager.save_to_disk()
 
     def batch_mode_process(self, batch_size=2):
         
@@ -106,4 +117,4 @@ class TelegramManager(object):
 if __name__ == "__main__":
     # 测试tg格式数据建库
     tg_manager = TelegramManager()
-    tg_manager.single_mode_process()
+    tg_manager.single_mode_process_v0("jackzone_full")
